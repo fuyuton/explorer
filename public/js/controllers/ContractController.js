@@ -1,8 +1,10 @@
 angular.module('BlocksApp').controller('ContractController', function($stateParams, $rootScope, $scope, $http) {
-    $scope.$on('$viewContentLoaded', function() {   
+    $scope.$on('$viewContentLoaded', function() {
         // initialize core components
         App.initAjax();
     });
+
+    $rootScope.isHome = false;
 
     $rootScope.$state.current.data["pageSubTitle"] = $stateParams.addr;
 
@@ -30,19 +32,19 @@ angular.module('BlocksApp').controller('ContractController', function($statePara
     })
 
     $scope.form = {};
-    $scope.contract = {"address": $stateParams.addr} 
+    $scope.contract = {"address": $stateParams.addr}
     $scope.errors = {};
-    
+
     $scope.submitCode = function() {
       console.log($scope.contract)
       $scope.errors = {};
       $("#submitCodeBtn").button("loading");
 
       // validate
-      
-      if (!isAddress($scope.contract.address)) 
+
+      if (!isAddress($scope.contract.address))
         $scope.errors.address = "Invalid Address";
-      if (typeof $scope.contract.name == "undefined")          
+      if (typeof $scope.contract.name == "undefined")
         $scope.errors.name = "Contract Name Required";
       if (typeof $scope.contract.version == "undefined")
         $scope.errors.version = "Compiler Version Required"
@@ -73,14 +75,14 @@ angular.module('BlocksApp').controller('ContractController', function($statePara
     $scope.resetCode = function() {
       $scope.form.contract.$setPristine();
       $scope.form.contract.$setUntouched();
-      $scope.contract = {"address": $stateParams.addr} 
+      $scope.contract = {"address": $stateParams.addr}
       $scope.errors = {};
     }
     $scope.startOver = function() {
       $scope.contract.compiled = false;
       $scope.form.contract.$setPristine();
       $scope.form.contract.$setUntouched();
-      $scope.contract = {"address": $stateParams.addr} 
+      $scope.contract = {"address": $stateParams.addr}
       $scope.errors = {};
     }
 
