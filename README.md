@@ -30,7 +30,7 @@ Basic settings:
 ```json
 {
     "gethPort": 8293, 
-    "blocks": [ {"start": 102555, "end": "latest"}],
+    "blocks": [ {"start": 0, "end": "latest"}],
     "quiet": false,
     "terminateAtExistingDB": true,
     "listenOnly": false
