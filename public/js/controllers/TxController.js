@@ -1,8 +1,10 @@
 angular.module('BlocksApp').controller('TxController', function($stateParams, $rootScope, $scope, $http, $location) {
-    $scope.$on('$viewContentLoaded', function() {   
+    $scope.$on('$viewContentLoaded', function() {
         // initialize core components
         App.initAjax();
     });
+
+    $rootScope.isHome = false;
 
     $rootScope.$state.current.data["pageSubTitle"] = $stateParams.hash;
     $scope.hash = $stateParams.hash;
@@ -16,7 +18,7 @@ angular.module('BlocksApp').controller('TxController', function($stateParams, $r
     }).success(function(data) {
       $scope.tx = data;
       if (data.timestamp)
-        $scope.tx.datetime = new Date(data.timestamp*1000); 
+        $scope.tx.datetime = new Date(data.timestamp*1000);
       if (data.isTrace) // Get internal txs
         fetchInternalTxs();
     });
@@ -28,6 +30,6 @@ angular.module('BlocksApp').controller('TxController', function($stateParams, $r
         data: {"tx_trace": $scope.hash}
       }).success(function(data) {
         $scope.internal_transactions = data;
-      });      
+      });
     }
 })

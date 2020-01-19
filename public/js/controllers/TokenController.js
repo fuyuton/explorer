@@ -1,8 +1,11 @@
 angular.module('BlocksApp').controller('TokenController', function($stateParams, $rootScope, $scope, $http, $location) {
-    $scope.$on('$viewContentLoaded', function() {   
+    $scope.$on('$viewContentLoaded', function() {
         // initialize core components
         App.initAjax();
     });
+
+    $rootScope.isHome = false;
+
     var activeTab = $location.url().split('#');
     if (activeTab.length > 1)
       $scope.activeTab = activeTab[1];
@@ -47,7 +50,7 @@ angular.module('BlocksApp').controller('TokenController', function($stateParams,
             $scope.showTokens = true;
             $scope.userTokens = data.tokens;
           });
-        } else 
+        } else
             $scope.errors.address = "Invalid Address";
 
     }

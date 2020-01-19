@@ -1,8 +1,6 @@
-# ETCExplorer 
+# NUKOexplorer 
 
-<b>Live Version: [etherhub.io](http://etherhub.io)</b>
-
-Follow the project progress at: [ETC Block Explorer Development](https://trello.com/b/W3ftl57z/etc-block-explorer-development) 
+<b>Live Version: [explorer.nekonium.org](http://explorer.nekonium.org/)</b>
 
 ## Local installation
 
@@ -31,8 +29,8 @@ Configuration file: `/tools/config.json`
 Basic settings:
 ```json
 {
-    "gethPort": 8545, 
-    "blocks": [ {"start": 2000000, "end": "latest"}],
+    "gethPort": 8293, 
+    "blocks": [ {"start": 0, "end": "latest"}],
     "quiet": false,
     "terminateAtExistingDB": true,
     "listenOnly": false
@@ -45,7 +43,7 @@ Basic settings:
 
 ```quiet``` prints out the log of what it is doing.
 
-```listenOnly``` When true, the grabber will create a filter to receive the latest blocks from geth as they arrive. It will <b>not</b> continue to populate older block numbers. 
+```listenOnly``` When true, the grabber will create a filter to receive the latest blocks from gnekonium as they arrive. It will <b>not</b> continue to populate older block numbers. 
 
 <b>Note: When ```listenOnly``` is set to ```true```, the ```blocks``` option is ignored. </b>
 
@@ -56,6 +54,8 @@ Basic settings:
 `node ./tools/grabber.js`
 
 Leave this running in the background to continuously fetch new blocks.
+
+You must run grabber.js in the background for the block explorer to work.
 
 ### Stats
 
