@@ -1,6 +1,6 @@
 {
     "gethPort": 8293, 
-    "blocks": [ {"start": 102555, "end": "latest"}],
+    "blocks": [ {"start": 3509727, "end": "latest" }],
     "quiet": false,
     "terminateAtExistingDB": false,
     "listenOnly": true

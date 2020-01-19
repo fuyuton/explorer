@@ -1,4 +1,4 @@
-require( '../db.js' );
+require( '../db.js');
 var etherUnits = require("../lib/etherUnits.js");
 var BigNumber = require('bignumber.js');
 
@@ -9,6 +9,8 @@ var Web3 = require('web3');
 var mongoose = require( 'mongoose' );
 var Block     = mongoose.model( 'Block' );
 var Transaction     = mongoose.model( 'Transaction' );
+
+var sleep = require('sleep');
 
 var grabBlocks = function(config) {
     var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:' + 
@@ -41,6 +43,7 @@ var listenBlocks = function(config, web3) {
 
 var grabBlock = function(config, web3, blockHashOrNumber) {
     var desiredBlockHashOrNumber;
+    //sleep.msleep(1000);
 
     // check if done
     if(blockHashOrNumber == undefined) {
@@ -137,6 +140,7 @@ var writeBlockToDB = function(config, blockData) {
                     blockData.number.toString() );
             }            
         }
+	//sleep.msleep(1000);
       });
 }
 

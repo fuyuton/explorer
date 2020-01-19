@@ -85,7 +85,7 @@ var getEtcEth = function(res) {
           result.chain = opt.data;
           callback(null, result);
         } catch (e) {
-          callback(e);
+          //callback(e);
         }
       })
     }).end();

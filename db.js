@@ -1,4 +1,20 @@
 var mongoose = require( 'mongoose' );
+
+var option = {
+	server: {
+		socketOptions: {
+			keepAlive: 60000,
+			connectTimeoutMS: 30000
+		}
+	},
+	replset: {
+		socketOptions: {
+			keepAlive: 60000,
+			connectTimeoutMS: 30000
+		}
+	}	
+};
+
 var Schema   = mongoose.Schema;
 
 var Block = new Schema(
@@ -58,5 +74,14 @@ module.exports.Block = mongoose.model('Block');
 module.exports.Contract = mongoose.model('Contract');
 module.exports.Transaction = mongoose.model('Transaction');
 
-mongoose.connect( 'mongodb://localhost/blockDB' );
+// mongoose.connect( 'mongodb://localhost/blockDB' );
+mongoose.connect( 'mongodb://localhost/blockDB', option );
+/* 
+mongoose.connect( 'mongodb://localhost/blockDB', option ).then(function(){
+	//connected successfully
+}, function(err){
+	// err handle
+});
+
+*/
 mongoose.set('debug', true);
